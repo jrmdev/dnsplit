@@ -78,7 +78,7 @@ If you want to use your company's nameservers when connected to the corporate LA
 ```
    {
        "name": "When at work forward FB queries to OpenDNS",
-	      "match": ["facebook.com", "*.facebook.com", "*.fbcdn.net"],
+        "match": ["facebook.com", "*.facebook.com", "*.fbcdn.net"],
        "condition": "eth0 172.16.21.0/20",
        "nameservers": ["208.67.222.222", "208.67.220.220"]
    },
@@ -94,13 +94,19 @@ You can also use "interface down" as a condition. This may be useful if you want
 ```
    {
        "name": "When off VPN, send queries for mycompany to other NS",
-	      "match": ["mycompany.com", "*.mycompany.com"],
+        "match": ["mycompany.com", "*.mycompany.com"],
        "condition": "tun0 down",
        "nameservers": ["37.235.1.174", "37.235.1.177"]
    }
 ```
 
 ### Installation
+
+dnsplit require some python libraries. To install them, run:
+
+```
+sudo pip install -r requirements.txt
+```
 
 First, copy the configuration file to `/etc`:
 
@@ -109,6 +115,7 @@ sudo cp dnsplit.conf /etc
 ```
 
 Edit the file to create the rules you want and set additional parameters as you need.
+
 You can simply run `sudo python dnsplit.py` from the command line to try it out. If you want to install it on the system, the script comes with a unit file for `systemd`. Suppose you want to install dnsplit in `/usr/local/bin`, proceed as follows:
 
 ```

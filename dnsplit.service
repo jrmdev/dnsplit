@@ -1,0 +1,10 @@
+[Unit]
+Description=DNSplit
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /usr/local/bin/dnsplit.py
+
+[Install]
+WantedBy=multi-user.target

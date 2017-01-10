@@ -72,9 +72,6 @@ class DNSForwarder():
 			reply = sock.recv(1024)
 			sock.close()
 
-			d = DNSRecord.parse(reply)
-			print "[i] Forwarded query for '%s' to '%s' and got reply '%s' " % (qname, ns, d.rr[0].rdata)
-
 		except Exception, e:
 			print "[!] Could not proxy request %s to %s: %s" % (qname, ns, e)
 		else:
@@ -138,8 +135,8 @@ class Config:
 
 			try:
 				config = json.loads(config)
-			except Exception, e:
-				sys.exit("[!] error: configuration file could not be parsed as valid JSON."+ str(e))
+			except:
+				sys.exit("[!] error: configuration file could not be parsed as valid JSON.")
 
 			self.bind = (config['listen-addr'], config['listen-port'])
 			self.default_nameservers = config['default-nameservers']

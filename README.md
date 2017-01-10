@@ -4,15 +4,13 @@ DNSplit will split your DNS traffic by dispatching queries to specific nameserve
 
 ### yesbutwhy
 
-I have been using [Unbound](https://unbound.net/) and it's great, but it didn't totally meet what I needed. Dnsplit lacks most of the features of Unbound, but here is what it can be used for:
+I have been using [Unbound](https://unbound.net/) and it's great, but it didn't totally meet what I needed. Dnsplit lacks most of the features of Unbound, but the key feature is that it can used to make decisions according to a set rules with conditions, such as:
 
-- Forward DNS queries for specific DNS suffixes to the relevant nameservers
-- Make decisions according to rules with conditions, such as:
-    - Forward queries for lists of pre-configured domains to specific nameservers
+    - Forward queries for lists of pre-configured domains to specific nameservers (traditional dns relay)
     - If you are connected to a VPN (e.g. interface tun0 is up), forward queries for internal domains to internal nameservers
     - If your network interface has an address in a particular network, forward queries to the corresponding nameservers
     - For all of the above, optionally add domain wildcard filters for the rules to match.
-    - If no previous rule was matched, forward queries to the default (public) nameservers
+    - If no previous rule was matched, forward queries to the default (public) nameservers.
     - And more (See examples)
 
 ### Examples
